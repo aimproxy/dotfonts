@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema id="com.github.calo001.fondo" path="/com/github/calo001/fondo/">
+  <schema id="com.github.aimproxy.dotfonts" path="/com/github/aimproxy/dotfonts/">
           <key name="window-x" type="i">
               <default>-1</default>
               <summary>Most recent x position of Fondo</summary>
