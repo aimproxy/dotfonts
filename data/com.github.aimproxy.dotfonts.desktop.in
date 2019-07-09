@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DotFont
+Comment=Find beautiful fonts and easy install
+Icon=com.github.aimproxy.dotfonts
+Exec=com.github.aimproxy.dotfonts
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=fonts;
