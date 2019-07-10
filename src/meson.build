@@ -4,6 +4,8 @@ sources += files(
 
   'windows/MainWindow.vala',
 
+  'widgets/HeaderBar.vala',
+
   'Application.vala',
   'Main.vala'
 )

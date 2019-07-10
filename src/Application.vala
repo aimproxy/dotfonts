@@ -35,7 +35,6 @@ using App.Configs;
 using App.Windows;
 
 namespace App {
-    public static GLib.Settings settings;
 
     public class Application : Granite.Application {
         public Application () {
@@ -44,7 +43,6 @@ namespace App {
                 flags: ApplicationFlags.FLAGS_NONE
             );
 
-            settings = new GLib.Settings (Constants.ID);
         }
 
         protected override void activate () {

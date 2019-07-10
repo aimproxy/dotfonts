@@ -32,12 +32,13 @@
  */
 
 using App.Configs;
+using App.Widgets;
 
 namespace App.Windows {
 
     public class MainWindow : Gtk.ApplicationWindow {
 
-        public static GLib.Settings g_settings;
+        public static GLib.Settings settings;
 
         public MainWindow (Gtk.Application app) {
             Object (
@@ -47,9 +48,14 @@ namespace App.Windows {
                 title: Constants.APP_NAME
             );
 
+            settings = new GLib.Settings (Constants.ID);
+
             var provider = new Gtk.CssProvider ();
             provider.load_from_resource (Constants.CSS);
             Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+            var header = new HeaderBar ();
+            this.set_titlebar (header);
 
             var settings = App.Configs.Settings.get_instance ();
             int x = settings.window_x;
