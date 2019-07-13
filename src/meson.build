@@ -1,10 +1,16 @@
 sources += files(
-  'configs/Constants.vala',
-  'configs/Settings.vala',
+  'Configs/Constants.vala',
+  'Configs/Settings.vala',
 
-  'windows/MainWindow.vala',
+  'Windows/MainWindow.vala',
 
-  'widgets/HeaderBar.vala',
+  'Services/Gapi.vala',
+
+  'Widgets/HeaderBar.vala',
+  'Widgets/FontListRow.vala',
+
+  'Views/FontList.vala',
+  'Views/FontView.vala',
 
   'Application.vala',
   'Main.vala'

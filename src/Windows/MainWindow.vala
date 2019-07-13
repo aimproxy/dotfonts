@@ -33,6 +33,7 @@
 
 using App.Configs;
 using App.Widgets;
+using App.Views;
 
 namespace App.Windows {
 
@@ -87,6 +88,11 @@ namespace App.Windows {
                 settings.window_height = root_h;
                 return false;
             });
+
+            var fonts_list_viw = new FontList ();
+
+            add (fonts_list_viw);
+            show_all ();
         }
     }
 }

@@ -31,14 +31,37 @@
  *
  */
 
-namespace App.Configs {
+namespace App.Widgets {
 
-    public class Constants {
+    public class FontListRow : Gtk.ListBoxRow {
 
-        public abstract const string ID = "com.github.aimproxy.dotfonts";
-        public abstract const string CSS = "/com/github/aimproxy/dotfonts/css/Application.css";
-        public abstract const string ICON = "com.github.aimproxy.dotfonts";
-        public abstract const string APP_NAME = "DotFonts";
+        public string font_family { get; construct; }
+        public string font_category { get; construct; }
 
+        public FontListRow (string family, string category) {
+            Object (
+                font_family: family,
+                font_category: category
+            );
+        }
+
+        construct {
+            var icon = new Gtk.Image ();
+            icon.icon_name = "font-x-generic";
+            icon.pixel_size = 24;
+
+            var label = new Gtk.Label (font_family);
+            label.ellipsize = Pango.EllipsizeMode.MIDDLE;
+
+            var grid = new Gtk.Grid ();
+            grid.column_spacing = 12;
+            grid.margin = 3;
+            grid.margin_start = 6;
+            grid.margin_end = 6;
+            grid.add (icon);
+            grid.add (label);
+
+            add(grid);
+        }
     }
 }

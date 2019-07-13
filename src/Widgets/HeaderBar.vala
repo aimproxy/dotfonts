@@ -33,14 +33,13 @@
 
 using App.Configs;
 using App.Windows;
+using App.Services;
 
 namespace App.Widgets {
 
     public class HeaderBar : Gtk.HeaderBar {
         public HeaderBar () {
             this.show_close_button = true;
-
-            get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
             var gtk_settings = Gtk.Settings.get_default ();
 
@@ -60,7 +59,7 @@ namespace App.Widgets {
             this.pack_end (mode_switch);
         }
 
-        public void detect_dark_mode (Gtk.Settings gtk_settings, Gtk.StyleContext context) {
+        private void detect_dark_mode (Gtk.Settings gtk_settings, Gtk.StyleContext context) {
             if (gtk_settings.gtk_application_prefer_dark_theme) {
                 App.Configs.Settings.get_instance ().use_dark_theme = true;
                 context.add_class ("dark");

@@ -36,8 +36,18 @@ dependencies = [
   dependency('gtk+-3.0'),
   dependency('json-glib-1.0'),
   dependency('libsoup-2.4'),
+  dependency('gtksourceview-3.0'),
   meson.get_compiler('vala').find_library('posix'),
 ]
+
+vala_lint = find_program('io.elementary.vala-lint', required : false)
+if vala_lint.found()
+    test (
+        'Vala lint',
+        vala_lint,
+        args: ['-d', join_paths(meson.source_root(), 'src')]
+    )
+endif
 
 e = executable('com.github.aimproxy.dotfonts',
     sources,
