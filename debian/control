@@ -1,0 +1,21 @@
+Source: com.github.aimproxy.dotfonts
+Section: x11
+Priority: optional
+Maintainer: aimproxy <diasmicaelandre@gmail.com>
+Build-Depends: cmake (>= 2.8),
+               debhelper (>= 9),
+               libgtk-3-dev,
+               valac (>= 0.40.0),
+               libglib2.0-dev,
+               libgtk-3-dev,
+               libgranite-dev,
+               libsoup2.4-dev,
+               libjson-glib-dev,
+               libgtksourceview-3.0
+
+Standards-Version: 3.9.3
+
+Package: com.github.aimproxy.dotfonts
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Find beautiful fonts and easy install on elementaryOS
