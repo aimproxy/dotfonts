@@ -34,6 +34,7 @@
 using App.Configs;
 using App.Windows;
 using App.Services;
+using App.Views;
 
 namespace App.Widgets {
 

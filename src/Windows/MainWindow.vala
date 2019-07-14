@@ -57,6 +57,9 @@ namespace App.Windows {
 
             var header = new HeaderBar ();
             this.set_titlebar (header);
+            var header_context = header.get_style_context ();
+            header_context.add_class ("titlebar");
+            header_context.add_class ("default-decoration");
 
             var settings = App.Configs.Settings.get_instance ();
             int x = settings.window_x;
