@@ -36,8 +36,8 @@ namespace App.Views {
 
         public FontView () {
             Object (
-                title: "",
-                description: ""
+                title: "Roboto",
+                description: "sans-serif"
             );
         }
 
@@ -47,29 +47,58 @@ namespace App.Views {
             snippet_css_title.xalign = 0;
             snippet_css_title.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
-            var source_buffer = new Gtk.SourceBuffer (null);
-            source_buffer.highlight_syntax = true;
-            source_buffer.language = Gtk.SourceLanguageManager.get_default ().get_language ("css");
-            source_buffer.style_scheme = new Gtk.SourceStyleSchemeManager ().get_scheme ("solarized-light");
+            var snippet_html_title = new Gtk.Label (_("Embed in HTML"));
+            snippet_html_title.margin_top = 5;
+            snippet_html_title.xalign = 0;
+            snippet_html_title.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+
+            var source_buffer_css = new Gtk.SourceBuffer (null);
+            source_buffer_css.highlight_syntax = true;
+            source_buffer_css.language = Gtk.SourceLanguageManager.get_default ().get_language ("css");
+            source_buffer_css.style_scheme = new Gtk.SourceStyleSchemeManager ().get_scheme ("solarized-light");
+
+            var source_buffer_html = new Gtk.SourceBuffer (null);
+            source_buffer_html.highlight_syntax = true;
+            source_buffer_html.language = Gtk.SourceLanguageManager.get_default ().get_language ("css");
+            source_buffer_html.style_scheme = new Gtk.SourceStyleSchemeManager ().get_scheme ("solarized-light");
 
             var source_view_css = new Gtk.SourceView ();
-            source_view_css.buffer = source_buffer;
+            source_view_css.buffer = source_buffer_css;
             source_view_css.editable = false;
             source_view_css.left_margin = source_view_css.right_margin = 6;
             source_view_css.monospace = true;
             source_view_css.pixels_above_lines = source_view_css.pixels_below_lines = 3;
             source_view_css.show_line_numbers = true;
 
+            var source_view_html = new Gtk.SourceView ();
+            source_view_html.buffer = source_buffer_html;
+            source_view_html.editable = false;
+            source_view_html.left_margin = source_view_html.right_margin = 6;
+            source_view_html.monospace = true;
+            source_view_html.pixels_above_lines = source_view_html.pixels_below_lines = 3;
+            source_view_html.show_line_numbers = true;
+
             var snippet_css = new Gtk.Grid ();
             snippet_css.get_style_context ().add_class ("code");
             snippet_css.add (source_view_css);
 
+            var snippet_html = new Gtk.Grid ();
+            snippet_html.get_style_context ().add_class ("code");
+            snippet_html.add (source_view_html);
+
             content_area.orientation = Gtk.Orientation.VERTICAL;
+            content_area.add (snippet_html_title);
+            content_area.add (snippet_html);
             content_area.add (snippet_css_title);
             content_area.add (snippet_css);
 
             notify["title"].connect (() => {
-                source_buffer.text = "font-family: \'%s\'".printf (title);
+                var embed_font = title;
+                var regex = new Regex ("[\\s]");
+                var new_embed_font = regex.replace (embed_font, -1, 0, "+");
+
+                source_buffer_html.text = "<link href=\"https://fonts.googleapis.com/css?family=%s&display=swap\" rel=\"stylesheet\">".printf (new_embed_font);
+                source_buffer_css.text = "@import url(\'https://fonts.googleapis.com/css?family=%s&display=swap\');\nfont-family: \'%s\';".printf (new_embed_font, title);
             });
             show_all ();
         }
