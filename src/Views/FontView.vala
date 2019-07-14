@@ -75,7 +75,7 @@ namespace App.Views {
             source_view_html.editable = false;
             source_view_html.left_margin = source_view_html.right_margin = 6;
             source_view_html.monospace = true;
-            source_view_html.pixels_above_lines = source_view_html.pixels_below_lines = 3;
+            source_view_html.pixels_above_lines = source_view_html.pixels_below_lines = 4;
             source_view_html.show_line_numbers = true;
 
             var snippet_css = new Gtk.Grid ();
@@ -97,8 +97,11 @@ namespace App.Views {
                 var regex = new Regex ("[\\s]");
                 var new_embed_font = regex.replace (embed_font, -1, 0, "+");
 
-                source_buffer_html.text = "<link href=\"https://fonts.googleapis.com/css?family=%s&display=swap\" rel=\"stylesheet\">".printf (new_embed_font);
-                source_buffer_css.text = "@import url(\'https://fonts.googleapis.com/css?family=%s&display=swap\');\nfont-family: \'%s\';".printf (new_embed_font, title);
+                var msg_embed_html = "To embed your selected fonts into a webpage, copy this code into the <head> of your HTML document!";
+                var msg_embed_css = "Use the following CSS rules to specify these families:";
+
+                source_buffer_html.text = "/* %s */\n<link href=\"https://fonts.googleapis.com/css?family=%s&display=swap\" rel=\"stylesheet\">".printf (msg_embed_html, new_embed_font);
+                source_buffer_css.text = "/* %s */\n@import url(\'https://fonts.googleapis.com/css?family=%s&display=swap\');\nfont-family: \'%s\';".printf (msg_embed_css, new_embed_font, title);
             });
             show_all ();
         }
