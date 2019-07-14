@@ -14,7 +14,6 @@ Build-Depends: cmake (>= 2.8),
                libgtksourceview-3.0-dev
 
 Standards-Version: 3.9.3
-
 Package: com.github.aimproxy.dotfonts
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
