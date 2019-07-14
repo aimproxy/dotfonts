@@ -54,12 +54,12 @@ namespace App.Views {
             snippet_html_title.xalign = 0;
             snippet_html_title.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
+            /*
             var costumize_fonts_title = new Gtk.Label (_("Customize"));
             costumize_fonts_title.margin_top = 5;
             costumize_fonts_title.xalign = 0;
             costumize_fonts_title.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
-            /*
             var editor_title = new Gtk.Label (_("Test this font"));
             editor_title.margin_top = 5;
             editor_title.xalign = 0;
@@ -122,7 +122,7 @@ namespace App.Views {
             snippet_html.add (source_view_html);
 
             content_area.orientation = Gtk.Orientation.VERTICAL;
-            content_area.add (costumize_fonts_title);
+            //content_area.add (costumize_fonts_title);
             content_area.add (snippet_html_title);
             content_area.add (snippet_html);
             content_area.add (snippet_css_title);
