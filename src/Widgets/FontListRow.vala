@@ -37,11 +37,13 @@ namespace App.Widgets {
 
         public string font_family { get; construct; }
         public string font_category { get; construct; }
+        public Array<string> font_variants { get; construct; }
 
-        public FontListRow (string family, string category) {
+        public FontListRow (string family, string category, Array<string> variants) {
             Object (
                 font_family: family,
-                font_category: category
+                font_category: category,
+                font_variants: variants
             );
         }
 

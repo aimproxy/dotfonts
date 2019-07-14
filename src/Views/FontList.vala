@@ -71,7 +71,7 @@ namespace App.Views {
 
             gapi.request_page_success.connect((fonts) => {
                 foreach (var font in fonts) {
-                    listbox.add ( new FontListRow (font.family, font.category));
+                    listbox.add ( new FontListRow (font.family, font.category, font.variants));
                 }
 
                 listbox.show_all ();
@@ -81,6 +81,12 @@ namespace App.Views {
             listbox.row_selected.connect ((row) => {
                 font_view.title = ((FontListRow) row).font_family;
                 font_view.description = ((FontListRow) row).font_category;
+                /*
+                for (int i = 0; i < ((FontListRow) row).font_variants.length ; i++) {
+            		print ("%s\n",((FontListRow) row).font_variants.index (i));
+            	}
+                */
+
             });
 
         }

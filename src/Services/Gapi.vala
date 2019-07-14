@@ -49,6 +49,7 @@ namespace App.Services {
         public struct Font {
             string family;
             string category;
+            Array<string> variants;
         }
 
         public void load_trending () {
@@ -87,6 +88,15 @@ namespace App.Services {
                 var font_structure = Font();
                 font_structure.family = obj.get_string_member ("family");
                 font_structure.category = obj.get_string_member ("category");
+
+                var arr_variants = new Array<string> ();
+                var variants = obj.get_array_member ("variants");
+
+                foreach (unowned Json.Node variant in variants.get_elements ()) {
+                    arr_variants.append_val (variant.get_string ());
+                }
+
+                font_structure.variants = arr_variants;
 
                 fonts_list.append(font_structure);
             }
