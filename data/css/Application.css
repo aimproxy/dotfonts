@@ -1,6 +1,4 @@
-.titlebar {
-    border: none;
-}
+.titlebar {}
 .download_btn {
   background-color: red;
   color: white;
