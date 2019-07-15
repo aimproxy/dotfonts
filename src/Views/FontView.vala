@@ -38,8 +38,10 @@ namespace App.Views {
         public string category { get; set; default = "display"; }
         public Array<string> variants { get; set; }
 
-        public string snippet_color_scheme = "solarized-dark";
-        public string snippet_class = "code-dark";
+        private string snippet_color_scheme = "solarized-dark";
+        private string snippet_class = "code-dark";
+        private string snippet_html_text = "/* %s */\n<link href=\"https://fonts.googleapis.com/css?family=%s&display=swap\" rel=\"stylesheet\">";
+        private string snippet_css_text = "/* %s */\n@import url(\'https://fonts.googleapis.com/css?family=%s&display=swap\');\nfont-family: \'%s\';";
 
         public FontView () {
             Object (
@@ -143,16 +145,16 @@ namespace App.Views {
             var regex = new Regex ("[\\s]");
             var new_embed_font = regex.replace (family, -1, 0, "+");
 
-            source_buffer_html.text = "/* %s */\n<link href=\"https://fonts.googleapis.com/css?family=%s&display=swap\" rel=\"stylesheet\">".printf (msg_embed_html, new_embed_font);
-            source_buffer_css.text = "/* %s */\n@import url(\'https://fonts.googleapis.com/css?family=%s&display=swap\');\nfont-family: \'%s\';".printf (msg_embed_css, new_embed_font, family);
+            source_buffer_html.text = snippet_html_text.printf (msg_embed_html, new_embed_font);
+            source_buffer_css.text = snippet_css_text.printf (msg_embed_css, new_embed_font, family);
 
             notify["family"].connect (() => {
                 font_family_label.set_label (family);
 
                 new_embed_font = regex.replace (family, -1, 0, "+");
 
-                source_buffer_html.text = "/* %s */\n<link href=\"https://fonts.googleapis.com/css?family=%s&display=swap\" rel=\"stylesheet\">".printf (msg_embed_html, new_embed_font);
-                source_buffer_css.text = "/* %s */\n@import url(\'https://fonts.googleapis.com/css?family=%s&display=swap\');\nfont-family: \'%s\';".printf (msg_embed_css, new_embed_font, family);
+                source_buffer_html.text = snippet_html_text.printf (msg_embed_html, new_embed_font);
+                source_buffer_css.text = snippet_css_text.printf (msg_embed_css, new_embed_font, family);
             });
 
             notify["category"].connect (() => {
@@ -169,6 +171,7 @@ namespace App.Views {
                     }
                     stdout.printf("%s\n", variants.index (i));
                 }
+
                 stdout.printf("%s\n", builder.str);
                 font_variants_label.set_label (builder.str);
             });
