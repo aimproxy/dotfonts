@@ -79,14 +79,9 @@ namespace App.Views {
 
 
             listbox.row_selected.connect ((row) => {
-                font_view.title = ((FontListRow) row).font_family;
-                font_view.description = ((FontListRow) row).font_category;
-                /*
-                for (int i = 0; i < ((FontListRow) row).font_variants.length ; i++) {
-            		print ("%s\n",((FontListRow) row).font_variants.index (i));
-            	}
-                */
-
+                font_view.family = ((FontListRow) row).font_family;
+                font_view.category = ((FontListRow) row).font_category;
+                font_view.variants = ((FontListRow) row).font_variants;
             });
 
         }

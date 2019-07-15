@@ -76,7 +76,7 @@ namespace App.Windows {
             if (width != -1 && height != -1) {
                 set_default_size (width, height);
             } else {
-                set_default_size (1094, 690);
+                set_default_size (1100, 690);
             }
 
             delete_event.connect (() => {

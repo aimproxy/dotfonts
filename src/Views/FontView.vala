@@ -32,39 +32,19 @@
  */
 
 namespace App.Views {
-    public class FontView : Granite.SimpleSettingsPage {
+    public class FontView : Gtk.Box {
+
+        public string family { get; set; default = "Sail"; }
+        public string category { get; set; default = "display"; }
+        public Array<string> variants { get; set; }
+
         public string snippet_color_scheme = "solarized-dark";
         public string snippet_class = "code-dark";
 
         public FontView () {
             Object (
-                title: "Roboto",
-                description: "sans-serif"
+                orientation: Gtk.Orientation.VERTICAL
             );
-        }
-
-        construct {
-            var snippet_css_title = new Gtk.Label (_("Specify in CSS"));
-            snippet_css_title.margin_top = 5;
-            snippet_css_title.xalign = 0;
-            snippet_css_title.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
-
-            var snippet_html_title = new Gtk.Label (_("Embed in HTML"));
-            snippet_html_title.margin_top = 5;
-            snippet_html_title.xalign = 0;
-            snippet_html_title.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
-
-            /*
-            var costumize_fonts_title = new Gtk.Label (_("Customize"));
-            costumize_fonts_title.margin_top = 5;
-            costumize_fonts_title.xalign = 0;
-            costumize_fonts_title.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
-
-            var editor_title = new Gtk.Label (_("Test this font"));
-            editor_title.margin_top = 5;
-            editor_title.xalign = 0;
-            editor_title.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
-            */
 
             var source_buffer_css = new Gtk.SourceBuffer (null);
             source_buffer_css.highlight_syntax = true;
@@ -75,13 +55,6 @@ namespace App.Views {
             source_buffer_html.highlight_syntax = true;
             source_buffer_html.language = Gtk.SourceLanguageManager.get_default ().get_language ("css");
             source_buffer_html.style_scheme = new Gtk.SourceStyleSchemeManager ().get_scheme (snippet_color_scheme);
-
-            /*
-            var source_buffer_editor = new Gtk.SourceBuffer (null);
-            source_buffer_editor.highlight_syntax = true;
-            source_buffer_editor.language = Gtk.SourceLanguageManager.get_default ().get_language ("markdown");
-            source_buffer_editor.style_scheme = new Gtk.SourceStyleSchemeManager ().get_scheme (snippet_color_scheme);
-            */
 
             var source_view_css = new Gtk.SourceView ();
             source_view_css.buffer = source_buffer_css;
@@ -99,51 +72,109 @@ namespace App.Views {
             source_view_html.pixels_above_lines = source_view_html.pixels_below_lines = 4;
             source_view_html.show_line_numbers = true;
 
-            /*
-            var source_view_editor = new Gtk.SourceView ();
-            source_view_editor.buffer = source_buffer_editor;
-            source_view_editor.editable = true;
-            source_view_editor.show_line_numbers = true;
-            source_view_editor.left_margin = source_view_html.right_margin = 6;
-            source_view_editor.pixels_above_lines = source_view_html.pixels_below_lines = 4;
-
-            var scrolled = new Gtk.ScrolledWindow (null, null);
-            scrolled.set_size_request (100,100);
-            scrolled.get_style_context ().add_class (snippet_class);
-            scrolled.add (source_view_editor);
-            */
-
             var snippet_css = new Gtk.Grid ();
+            snippet_css.height_request = 75;
+            snippet_css.width_request = 850;
             snippet_css.get_style_context ().add_class (snippet_class);
             snippet_css.add (source_view_css);
 
             var snippet_html = new Gtk.Grid ();
+            snippet_html.height_request = 60;
+            snippet_html.width_request = 850;
             snippet_html.get_style_context ().add_class (snippet_class);
             snippet_html.add (source_view_html);
 
-            content_area.orientation = Gtk.Orientation.VERTICAL;
-            //content_area.add (costumize_fonts_title);
-            content_area.add (snippet_html_title);
-            content_area.add (snippet_html);
-            content_area.add (snippet_css_title);
-            content_area.add (snippet_css);
-            //content_area.add (editor_title);
-            //content_area.add (scrolled);
+            var download_btn = new Gtk.Button.with_label (_("Download"));
+            var install_btn = new Gtk.Button.with_label (_("Install"));
 
-            // source_buffer_editor.text = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z\na b c d e f g h i j k l m o p q r s t u v w x y z\n1 2 3 4 5 6 7 8 9 0\n!@#£$§%&";
+            var button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+            button_box.margin = 6;
+            button_box.pack_start (download_btn, false, false);
+            button_box.pack_start (install_btn, false, false);
 
-            notify["title"].connect (() => {
+            var bottom_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            bottom_box.hexpand = true;
+            bottom_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+            bottom_box.add (button_box);
 
-                var embed_font = title;
-                var regex = new Regex ("[\\s]");
-                var new_embed_font = regex.replace (embed_font, -1, 0, "+");
+            var font_family_label = new Gtk.Label (family);
+            font_family_label.margin_top = 5;
+            font_family_label.xalign = 0;
+            font_family_label.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
 
-                var msg_embed_html = (_("To embed your selected fonts into a webpage, copy this code into the <head> of your HTML document!"));
-                var msg_embed_css = (_("Use the following CSS rules to specify these families:"));
+            var font_category_label = new Gtk.Label (category);
+            font_category_label.xalign = 0;
+            font_category_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+
+            var font_variants_label = new Gtk.Label ("regular");
+            font_variants_label.xalign = 0;
+            font_variants_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
+
+            var snippet_css_title = new Gtk.Label (_("Specify in CSS"));
+            snippet_css_title.margin_top = 5;
+            snippet_css_title.xalign = 0;
+            snippet_css_title.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+
+            var snippet_html_title = new Gtk.Label (_("Embed in HTML"));
+            snippet_html_title.margin_top = 5;
+            snippet_html_title.xalign = 0;
+            snippet_html_title.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+
+            var fonts_grid = new Gtk.Grid ();
+            fonts_grid.row_spacing = 12;
+            fonts_grid.margin_start = 24;
+            fonts_grid.margin_end = 24;
+
+            fonts_grid.attach (font_family_label, 0, 0, 1, 1);
+            fonts_grid.attach (font_category_label, 0, 1, 1, 1);
+            fonts_grid.attach (font_variants_label, 0 , 2, 1, 1);
+            fonts_grid.attach (snippet_css_title, 0, 3, 1, 1);
+            fonts_grid.attach (snippet_css, 0, 4, 1, 1);
+            fonts_grid.attach (snippet_html_title, 0, 5, 1, 1);
+            fonts_grid.attach (snippet_html, 0, 6, 1, 1);
+
+            var scrolled = new Gtk.ScrolledWindow (null, null);
+            scrolled.expand = true;
+            scrolled.add (fonts_grid);
+
+            var msg_embed_html = (_("To embed your selected fonts into a webpage, copy this code into the <head> of your HTML document!"));
+            var msg_embed_css = (_("Use the following CSS rules to specify these families:"));
+
+            var regex = new Regex ("[\\s]");
+            var new_embed_font = regex.replace (family, -1, 0, "+");
+
+            source_buffer_html.text = "/* %s */\n<link href=\"https://fonts.googleapis.com/css?family=%s&display=swap\" rel=\"stylesheet\">".printf (msg_embed_html, new_embed_font);
+            source_buffer_css.text = "/* %s */\n@import url(\'https://fonts.googleapis.com/css?family=%s&display=swap\');\nfont-family: \'%s\';".printf (msg_embed_css, new_embed_font, family);
+
+            notify["family"].connect (() => {
+                font_family_label.set_label (family);
+
+                new_embed_font = regex.replace (family, -1, 0, "+");
 
                 source_buffer_html.text = "/* %s */\n<link href=\"https://fonts.googleapis.com/css?family=%s&display=swap\" rel=\"stylesheet\">".printf (msg_embed_html, new_embed_font);
-                source_buffer_css.text = "/* %s */\n@import url(\'https://fonts.googleapis.com/css?family=%s&display=swap\');\nfont-family: \'%s\';".printf (msg_embed_css, new_embed_font, title);
+                source_buffer_css.text = "/* %s */\n@import url(\'https://fonts.googleapis.com/css?family=%s&display=swap\');\nfont-family: \'%s\';".printf (msg_embed_css, new_embed_font, family);
             });
+
+            notify["category"].connect (() => {
+                font_category_label.set_label (category);
+            });
+
+            notify["variants"].connect (() => {
+                var builder = new StringBuilder ();
+                for (var i = 0; i < variants.length; i++) {
+                    if (variants.length == 1) {
+                        builder.append (variants.index (i));
+                    } else {
+                        builder.append (variants.index (i) + ", ");
+                    }
+                    stdout.printf("%s\n", variants.index (i));
+                }
+                stdout.printf("%s\n", builder.str);
+                font_variants_label.set_label (builder.str);
+            });
+
+            add (scrolled);
+            pack_end (bottom_box, false, false);
 
             show_all ();
         }
