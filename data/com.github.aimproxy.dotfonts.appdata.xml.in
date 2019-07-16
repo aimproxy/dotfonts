@@ -6,6 +6,10 @@
     <project_license>GPL-3.0</project_license>
     <name>DotFonts</name>
     <summary>Find beautiful fonts and easy install</summary>
+    <description>
+      <p>The simplest way to try, install, and manage fonts.</p>
+      <p>Install fonts from the cloud on your computer in seconds!</p>
+    </description>
     <developer_name>Micael Dias (@aimproxy)</developer_name>
     <provides>
         <binary>com.github.aimproxy.dotfonts</binary>
