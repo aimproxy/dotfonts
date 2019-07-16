@@ -10,6 +10,18 @@
     <provides>
         <binary>com.github.aimproxy.dotfonts</binary>
     </provides>
+    <screenshots>
+     <screenshot type="default">
+         <image>https://raw.githubusercontent.com/aimproxy/dotfonts/master/data/screenshots/app-0.1.png</image>
+     </screenshot>
+   </screenshots>
+   <releases>
+     <release version="0.1.0" date="2019-07-16">
+       <description>
+         <p>Launch BETA Release</p>
+       </description>
+     </release>
+   </releases>
     <content_rating type="oars-1.1">
       <content_attribute id="violence-cartoon">none</content_attribute>
       <content_attribute id="violence-fantasy">none</content_attribute>
@@ -44,7 +56,7 @@
     <url type="help">https://github.com/aimproxy/dotfonts/issues</url>
     <update_contact>diasmicaelandre@gmail.com</update_contact>
     <custom>
-        <value key="x-appcenter-color-primary">#f7d8d5</value>
+        <value key="x-appcenter-color-primary">#FF204A</value>
         <value key="x-appcenter-color-primary-text">#000000</value>
     </custom>
 </component>
