@@ -42,6 +42,8 @@ namespace App.Views {
         private string snippet_class = "code-dark";
         private string snippet_html_text = "/* %s */\n<link href=\"https://fonts.googleapis.com/css?family=%s&display=swap\" rel=\"stylesheet\">";
         private string snippet_css_text = "/* %s */\n@import url(\'https://fonts.googleapis.com/css?family=%s&display=swap\');\nfont-family: \'%s\';";
+        private string new_embed_font;
+        private Regex regex;
 
         public FontView () {
             Object (
@@ -129,17 +131,27 @@ namespace App.Views {
             var msg_embed_html = (_("To embed your selected fonts into a webpage, copy this code into the <head> of your HTML document!"));
             var msg_embed_css = (_("Use the following CSS rules to specify these families:"));
 
-            var regex = new Regex ("[\\s]");
-            var new_embed_font = regex.replace (family, -1, 0, "+");
-
+            try {
+                regex = new Regex ("[\\s]");
+            } catch (GLib.Error e) {
+                GLib.error ("%s", e.message);
+            }
+            try {
+                new_embed_font = regex.replace (family, -1, 0, "+");
+            } catch (GLib.Error e) {
+                GLib.error ("%s", e.message);
+            }
             source_buffer_html.text = snippet_html_text.printf (msg_embed_html, new_embed_font);
             source_buffer_css.text = snippet_css_text.printf (msg_embed_css, new_embed_font, family);
 
             notify["family"].connect (() => {
                 font_family_label.set_label (family);
 
-                new_embed_font = regex.replace (family, -1, 0, "+");
-
+                try {
+                    new_embed_font = regex.replace (family, -1, 0, "+");
+                } catch (GLib.Error e) {
+                    GLib.error ("%s", e.message);
+                }
                 source_buffer_html.text = snippet_html_text.printf (msg_embed_html, new_embed_font);
                 source_buffer_css.text = snippet_css_text.printf (msg_embed_css, new_embed_font, family);
             });
