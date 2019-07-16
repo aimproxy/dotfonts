@@ -1,6 +1,6 @@
 Source: com.github.aimproxy.dotfonts
 Section: x11
-Priority: optional
+Priority: extra
 Maintainer: aimproxy <diasmicaelandre@gmail.com>
 Build-Depends: cmake (>= 2.8),
                debhelper (>= 9),
@@ -12,8 +12,8 @@ Build-Depends: cmake (>= 2.8),
                libsoup2.4-dev,
                libjson-glib-dev,
                libgtksourceview-3.0-dev
-
 Standards-Version: 3.9.3
+
 Package: com.github.aimproxy.dotfonts
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
