@@ -41,6 +41,7 @@ namespace App.Widgets {
     public class HeaderBar : Gtk.HeaderBar {
         public HeaderBar () {
             this.show_close_button = true;
+            this.set_title ("DotFonts");
 
             var gtk_settings = Gtk.Settings.get_default ();
 
