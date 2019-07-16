@@ -86,19 +86,6 @@ namespace App.Views {
             snippet_html.get_style_context ().add_class (snippet_class);
             snippet_html.add (source_view_html);
 
-            var download_btn = new Gtk.Button.with_label (_("Download"));
-            var install_btn = new Gtk.Button.with_label (_("Install"));
-
-            var button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-            button_box.margin = 6;
-            button_box.pack_start (download_btn, false, false);
-            button_box.pack_start (install_btn, false, false);
-
-            var bottom_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            bottom_box.hexpand = true;
-            bottom_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-            bottom_box.add (button_box);
-
             var font_family_label = new Gtk.Label (family);
             font_family_label.margin_top = 5;
             font_family_label.xalign = 0;
@@ -177,7 +164,6 @@ namespace App.Views {
             });
 
             add (scrolled);
-            pack_end (bottom_box, false, false);
 
             show_all ();
         }
