@@ -5,12 +5,14 @@ sources += files(
   'Windows/MainWindow.vala',
 
   'Services/Gapi.vala',
+  'Services/Downloader.vala',
 
   'Widgets/HeaderBar.vala',
   'Widgets/FontListRow.vala',
+  'Widgets/FontDownloadListRow.vala',
 
   'Views/Sidebar.vala',
-  'Views/FontView.vala',
+  'Views/FontInfo.vala',
   'Views/WelcomeView.vala',
 
   'Application.vala',
