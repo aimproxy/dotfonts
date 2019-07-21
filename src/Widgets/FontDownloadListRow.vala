@@ -31,41 +31,56 @@
  *
  */
 
+using App.Services;
+
 namespace App.Widgets {
 
-    public class FontListRow : Gtk.ListBoxRow {
+    public class FontDownloadListRow : Gtk.ListBoxRow {
 
-        public string font_family { get; construct; }
-        public string font_category { get; construct; }
-        public Array<string> font_variants { get; construct; }
-        public Gee.HashMap<string, string> font_files { get; construct; }
+        Downloader downloader;
+        Gtk.Button download_btn;
+        Gtk.Label download_label;
+        Gtk.Grid grid;
 
-        public FontListRow (string family, string category,
-                            Array<string> variants,
-                            Gee.HashMap<string, string> files) {
+        public string font_file_name { get; construct; }
+        public string font_file_variant { get; construct; }
+        public string font_file_link { get; construct; }
+
+        public FontDownloadListRow (string file_name, string file_variant, string file_link) {
             Object (
-                font_family: family,
-                font_category: category,
-                font_variants: variants,
-                font_files: files
+                font_file_name: file_name,
+                font_file_variant: file_variant,
+                font_file_link: file_link
             );
         }
 
         construct {
-            var icon = new Gtk.Image ();
-            icon.icon_name = "font-x-generic";
-            icon.pixel_size = 24;
+            downloader = Downloader.get_instance ();
 
-            var label = new Gtk.Label (font_family);
-            label.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            download_btn = new Gtk.Button.from_icon_name ("folder-download-symbolic", Gtk.IconSize.BUTTON);
+            download_btn.clicked.connect (() => {
+                var file = font_file_name + "_" + font_file_variant;
+                downloader.download_font (file, font_file_link);
+            });
 
-            var grid = new Gtk.Grid ();
+            downloader.finish_download.connect ((status) => {
+            });
+
+            download_label = new Gtk.Label (font_file_variant);
+            download_label.xalign = 0;
+            download_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+            download_label.ellipsize = Pango.EllipsizeMode.MIDDLE;
+
+            grid = new Gtk.Grid ();
+            grid.column_homogeneous = true;
+            grid.row_homogeneous = true;
             grid.column_spacing = 12;
-            grid.margin = 3;
+            grid.row_spacing = 6;
+            grid.margin = 8;
             grid.margin_start = 6;
             grid.margin_end = 6;
-            grid.add (icon);
-            grid.add (label);
+            grid.add (download_label);
+            grid.add (download_btn);
 
             add(grid);
         }

@@ -33,6 +33,7 @@
 
 using App.Services;
 using App.Widgets;
+using App.Windows;
 
 namespace App.Views {
     public class Sidebar : Gtk.ScrolledWindow {
@@ -60,19 +61,21 @@ namespace App.Views {
 
             gapi.request_page_success.connect((fonts) => {
                 foreach (var font in fonts) {
-                    listbox.add ( new FontListRow (font.family, font.category, font.variants));
+                    listbox.add (new FontListRow (font.family,
+                                                  font.category,
+                                                  font.variants,
+                                                  font.files));
                 }
 
                 listbox.show_all ();
             });
 
-            /*
             listbox.row_selected.connect ((row) => {
-                font_view.family = ((FontListRow) row).font_family;
-                font_view.category = ((FontListRow) row).font_category;
-                font_view.variants = ((FontListRow) row).font_variants;
+                MainWindow.font_info.family = ((FontListRow) row).font_family;
+                MainWindow.font_info.category = ((FontListRow) row).font_category;
+                MainWindow.font_info.variants = ((FontListRow) row).font_variants;
+                MainWindow.font_info.files = ((FontListRow) row).font_files;
             });
-            */
 
         }
 
