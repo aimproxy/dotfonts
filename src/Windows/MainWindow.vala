@@ -41,6 +41,7 @@ namespace App.Windows {
 
         public static GLib.Settings settings;
         public static Gtk.Stack stack;
+        public static FontInfo font_info;
 
         public MainWindow (Gtk.Application app) {
             Object (
@@ -93,13 +94,17 @@ namespace App.Windows {
                 return false;
             });
 
+            var grid_g = new Gtk.Grid ();
+            font_info = new FontInfo ();
             var sidebar = new Sidebar ();
+            grid_g.attach (sidebar, 0, 1);
+            grid_g.attach (font_info, 1, 1);
 
             WelcomeView welcome = new WelcomeView ();
 
             stack = new Gtk.Stack ();
             stack.add_named (welcome, "welcome_view");
-            stack.add_named (sidebar, "sidebar_view");
+            stack.add_named (grid_g, "sidebar_view");
 
             welcome.search_on_google_fonts.connect (() => {
                 stack.set_visible_child_full ("sidebar_view", Gtk.StackTransitionType.SLIDE_LEFT);
