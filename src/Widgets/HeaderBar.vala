@@ -39,13 +39,18 @@ using App.Views;
 namespace App.Widgets {
 
     public class HeaderBar : Gtk.HeaderBar {
+
+        Gtk.Settings gtk_settings;
+        Granite.ModeSwitch mode_switch;
+        public Gtk.Button go_back;
+
         public HeaderBar () {
             this.show_close_button = true;
             this.set_title ("DotFonts");
 
-            var gtk_settings = Gtk.Settings.get_default ();
+            gtk_settings = Gtk.Settings.get_default ();
 
-            var mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+            mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
             mode_switch.primary_icon_tooltip_text = "Light";
             mode_switch.secondary_icon_tooltip_text = "Dark";
             mode_switch.valign = Gtk.Align.CENTER;
@@ -58,6 +63,12 @@ namespace App.Widgets {
 
             MainWindow.settings.bind ("use-dark-theme", mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
+            go_back = new Gtk.Button.from_icon_name ("go-previous", Gtk.IconSize.BUTTON);
+            go_back.clicked.connect (() => {
+                MainWindow.stack.set_visible_child_full ("welcome_view", Gtk.StackTransitionType.SLIDE_RIGHT);
+            });
+
+            this.pack_start (go_back);
             this.pack_end (mode_switch);
         }
 

@@ -9,8 +9,9 @@ sources += files(
   'Widgets/HeaderBar.vala',
   'Widgets/FontListRow.vala',
 
-  'Views/FontList.vala',
+  'Views/Sidebar.vala',
   'Views/FontView.vala',
+  'Views/WelcomeView.vala',
 
   'Application.vala',
   'Main.vala'

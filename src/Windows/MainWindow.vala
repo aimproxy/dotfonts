@@ -40,6 +40,7 @@ namespace App.Windows {
     public class MainWindow : Gtk.ApplicationWindow {
 
         public static GLib.Settings settings;
+        public static Gtk.Stack stack;
 
         public MainWindow (Gtk.Application app) {
             Object (
@@ -92,10 +93,22 @@ namespace App.Windows {
                 return false;
             });
 
-            var fonts_list_viw = new FontList ();
+            var sidebar = new Sidebar ();
 
-            add (fonts_list_viw);
-            show_all ();
+            WelcomeView welcome = new WelcomeView ();
+
+            stack = new Gtk.Stack ();
+            stack.add_named (welcome, "welcome_view");
+            stack.add_named (sidebar, "sidebar_view");
+
+            welcome.search_on_google_fonts.connect (() => {
+                stack.set_visible_child_full ("sidebar_view", Gtk.StackTransitionType.SLIDE_LEFT);
+            });
+
+            stack.set_visible_child_name ("welcome_view");
+
+            this.add (stack);
+            this.show_all ();
         }
     }
 }

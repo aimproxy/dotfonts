@@ -35,33 +35,22 @@ using App.Services;
 using App.Widgets;
 
 namespace App.Views {
-    public class FontList : Gtk.Paned {
-        private Gtk.ListBox listbox;
-        private Gapi gapi;
+    public class Sidebar : Gtk.ScrolledWindow {
+        Gtk.ListBox listbox;
+        Gapi gapi;
 
-        public FontList () {
-            Object (
-                orientation: Gtk.Orientation.HORIZONTAL,
-                position: 256
-            );
-        }
+        public Sidebar () {}
 
         construct {
             gapi = Gapi.get_instance();
-
-            var font_view = new FontView ();
 
             listbox = new Gtk.ListBox ();
             listbox.activate_on_single_click = true;
             listbox.selection_mode = Gtk.SelectionMode.SINGLE;
 
-            var scrolled_window = new Gtk.ScrolledWindow (null, null);
-            scrolled_window.hscrollbar_policy = Gtk.PolicyType.NEVER;
-            scrolled_window.vexpand = true;
-            scrolled_window.add (listbox);
-
-            pack1 (scrolled_window, true, false);
-            pack2 (font_view, true, false);
+            this.hscrollbar_policy = Gtk.PolicyType.NEVER;
+            this.vexpand = true;
+            this.add (listbox);
 
             try {
                 gapi.load_trending ();
@@ -77,12 +66,13 @@ namespace App.Views {
                 listbox.show_all ();
             });
 
-
+            /*
             listbox.row_selected.connect ((row) => {
                 font_view.family = ((FontListRow) row).font_family;
                 font_view.category = ((FontListRow) row).font_category;
                 font_view.variants = ((FontListRow) row).font_variants;
             });
+            */
 
         }
 
