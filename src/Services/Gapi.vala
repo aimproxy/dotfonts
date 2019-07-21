@@ -50,6 +50,7 @@ namespace App.Services {
             string family;
             string category;
             Array<string> variants;
+            Gee.HashMap<string, string> files;
         }
 
         public void load_trending () {
@@ -77,26 +78,36 @@ namespace App.Services {
         }
 
         private List<Font?> get_data (Json.Parser parser) {
-            var fonts_list = new List<Font?> ();
+            List<Font?> fonts_list = new List<Font?> ();
 
-            var root_object = parser.get_root ().get_object ();
-            var res = root_object.get_array_member ("items");
+            Json.Node root = parser.get_root ();
 
-            foreach (var font in res.get_elements ()) {
+            assert(root.get_node_type () == Json.NodeType.OBJECT);
+
+            Json.Object res = root.get_object ();
+            Json.Array items = res.get_array_member ("items");
+
+            foreach (unowned Json.Node font in items.get_elements ()) {
+                assert(font.get_node_type () == Json.NodeType.OBJECT);
                 var obj = font.get_object ();
-
                 var font_structure = Font();
+
                 font_structure.family = obj.get_string_member ("family");
                 font_structure.category = obj.get_string_member ("category");
 
                 var arr_variants = new Array<string> ();
                 var variants = obj.get_array_member ("variants");
-
                 foreach (unowned Json.Node variant in variants.get_elements ()) {
                     arr_variants.append_val (variant.get_string ());
                 }
-
                 font_structure.variants = arr_variants;
+
+                var hashmap_files = new Gee.HashMap<string, string> ();
+                var files_obj = obj.get_object_member ("files");
+                foreach (var file in files_obj.get_members ()) {
+                    hashmap_files.set (file, files_obj.get_string_member (file));
+                }
+                font_structure.files = hashmap_files;
 
                 fonts_list.append(font_structure);
             }
