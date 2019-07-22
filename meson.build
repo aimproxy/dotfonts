@@ -1,5 +1,5 @@
 project('com.github.aimproxy.dotfonts', ['vala', 'c'],
-    version : '0.1.0',
+    version : '0.1.2',
     license: 'GPL-3.0'
 )
 
