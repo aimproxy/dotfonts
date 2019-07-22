@@ -42,6 +42,11 @@ namespace App.Windows {
         public static GLib.Settings settings;
         public static Gtk.Stack stack;
         public static FontInfo font_info;
+        Gtk.CssProvider provider;
+        Gtk.Paned g_fonts;
+        Sidebar sidebar;
+        HeaderBar header;
+        WelcomeView welcome;
 
         public MainWindow (Gtk.Application app) {
             Object (
@@ -53,11 +58,11 @@ namespace App.Windows {
 
             settings = new GLib.Settings (Constants.ID);
 
-            var provider = new Gtk.CssProvider ();
+            provider = new Gtk.CssProvider ();
             provider.load_from_resource (Constants.CSS);
             Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            var header = new HeaderBar ();
+            header = new HeaderBar ();
             this.set_titlebar (header);
             var header_context = header.get_style_context ();
             header_context.add_class ("titlebar");
@@ -94,17 +99,18 @@ namespace App.Windows {
                 return false;
             });
 
-            var grid_g = new Gtk.Grid ();
+            g_fonts = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             font_info = new FontInfo ();
-            var sidebar = new Sidebar ();
-            grid_g.attach (sidebar, 0, 1);
-            grid_g.attach (font_info, 1, 1);
+            sidebar = new Sidebar ();
+            g_fonts.set_position (256);
+            g_fonts.pack1 (sidebar, false, false);
+            g_fonts.pack2 (font_info, true, false);
 
-            WelcomeView welcome = new WelcomeView ();
+            welcome = new WelcomeView ();
 
             stack = new Gtk.Stack ();
             stack.add_named (welcome, "welcome_view");
-            stack.add_named (grid_g, "sidebar_view");
+            stack.add_named (g_fonts, "sidebar_view");
 
             welcome.search_on_google_fonts.connect (() => {
                 stack.set_visible_child_full ("sidebar_view", Gtk.StackTransitionType.SLIDE_LEFT);
