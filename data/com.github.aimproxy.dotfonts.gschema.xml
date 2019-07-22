@@ -3,32 +3,23 @@
   <schema id="com.github.aimproxy.dotfonts" path="/com/github/aimproxy/dotfonts/">
           <key name="window-x" type="i">
               <default>-1</default>
-              <summary>Most recent x position of Fondo</summary>
-              <description>Most recent x position of Fondo</description>
           </key>
 
           <key name="window-y" type="i">
               <default>-1</default>
-              <summary>Most recent y position of Fondo</summary>
-              <description>Most recent y position of Fondo</description>
           </key>
 
           <key name="window-height" type="i">
               <default>-1</default>
-              <summary>Most recent window height of Fondo</summary>
-              <description>Most recent window height of Fondo</description>
           </key>
 
           <key name="window-width" type="i">
               <default>-1</default>
-              <summary>Most recent window width of Fondo</summary>
-              <description>Most recent window width of Fondo</description>
           </key>
 
           <key name="use-dark-theme" type="b">
               <default>false</default>
               <summary>Dark Theme</summary>
-              <description>Prefer Dark Theme for Fondo</description>
           </key>
   </schema>
 </schemalist>
