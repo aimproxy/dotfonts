@@ -12,7 +12,7 @@ add_project_arguments([
 gnome = import('gnome')
 i18n = import('i18n')
 
-gresource = gnome.compile_resources(
+as_resource = gnome.compile_resources(
     'as-resources', 'data/com.github.aimproxy.dotfonts.gresource.xml',
     source_dir: 'data',
     c_name: 'as'
@@ -24,21 +24,7 @@ conf_data.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf_data.set_quoted('VERSION', meson.project_version())
 conf_data.set_quoted('PREFIX', get_option('prefix'))
 
-sources = files()
-
-subdir('data')
 subdir('src')
-
-dependencies = [
-	dependency('gobject-2.0'),
-  dependency('glib-2.0'),
-  dependency('granite'),
-  dependency('gtk+-3.0'),
-  dependency('json-glib-1.0'),
-  dependency('libsoup-2.4'),
-  dependency('gtksourceview-3.0'),
-  meson.get_compiler('vala').find_library('posix'),
-]
 
 vala_lint = find_program('io.elementary.vala-lint', required : false)
 if vala_lint.found()
@@ -49,11 +35,24 @@ if vala_lint.found()
     )
 endif
 
-e = executable('com.github.aimproxy.dotfonts',
+executable(
+    meson.project_name(),
     sources,
-    gresource,
-    dependencies: dependencies,
+    as_resource,
+    dependencies: [
+        dependency('gobject-2.0'),
+        dependency('glib-2.0'),
+        dependency('granite'),
+        dependency('gtk+-3.0'),
+        dependency('json-glib-1.0'),
+        dependency('libsoup-2.4'),
+        dependency('gtksourceview-3.0'),
+        meson.get_compiler('vala').find_library('posix'),
+    ],
     install : true
 )
+
+subdir('data')
+subdir('po')
 
 meson.add_install_script('meson/post_install.py')

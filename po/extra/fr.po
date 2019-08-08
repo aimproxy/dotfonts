@@ -1,0 +1,95 @@
+# French translations for extra package.
+# Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# NathanBnm, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-08 12:27+0200\n"
+"PO-Revision-Date: 2019-08-08 12:20+0200\n"
+"Last-Translator: NathanBnm\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: data/com.github.aimproxy.dotfonts.desktop.in:3
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:7
+msgid "DotFonts"
+msgstr "DotFonts"
+
+#: data/com.github.aimproxy.dotfonts.desktop.in:4
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:8
+msgid "Find beautiful fonts and easy install"
+msgstr "Trouvez de magnifiques polices faciles a installer"
+
+#: data/com.github.aimproxy.dotfonts.desktop.in:5
+msgid "com.github.aimproxy.dotfonts"
+msgstr "com.github.aimproxy.dotfonts"
+
+#: data/com.github.aimproxy.dotfonts.desktop.in:10
+msgid "fonts;"
+msgstr "polices;"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:10
+msgid "The simplest way to try, install, and manage fonts."
+msgstr ""
+"La façon la plus simple d'essayer, d'installer et de gérer ses polices."
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:11
+msgid "Install fonts from the cloud on your computer in seconds!"
+msgstr ""
+"Installez des polices à partir du Cloud sur votre ordinateur en quelques "
+"secondes !"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:13
+msgid "Micael Dias (@aimproxy)"
+msgstr "Micael Dias (@aimproxy)"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:28
+msgid "Screenshoots with default eOS settings"
+msgstr ""
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:33
+msgid "Fix Premeature end of tag in appdata.xml.in"
+msgstr ""
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:38
+msgid "New"
+msgstr ""
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:40
+msgid "Welcome View"
+msgstr ""
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:41
+msgid "Download Button"
+msgstr ""
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:42
+msgid "Install Button"
+msgstr ""
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:44
+msgid "Improvements"
+msgstr ""
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:46
+msgid "Make Google API Request Async"
+msgstr ""
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:48
+msgid "Fix"
+msgstr ""
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:50
+msgid "Fix Desktop Name"
+msgstr ""
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:56
+msgid "Launch BETA Release"
+msgstr ""
