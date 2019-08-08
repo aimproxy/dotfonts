@@ -9,7 +9,6 @@ sources += files(
   'Widgets/FontDownloadListRow.vala',
   'Views/Sidebar.vala',
   'Views/FontInfo.vala',
-  'Views/WelcomeView.vala',
   'Application.vala',
   'Main.vala'
 )
