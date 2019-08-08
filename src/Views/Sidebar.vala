@@ -15,8 +15,11 @@ using App.Windows;
 namespace App.Views {
     public class Sidebar : Gtk.ScrolledWindow {
         Gtk.Box box;
+        Gtk.Grid grid;
         Gtk.SearchEntry search_entry;
+        Gtk.Button filter_btn;
         Gtk.ListBox listbox;
+        Gtk.Popover menu_popover;
         Gapi gapi;
 
         public Sidebar () {}
@@ -31,12 +34,40 @@ namespace App.Views {
 
             search_entry = new Gtk.SearchEntry ();
             search_entry.margin = 8;
+            search_entry.margin_end = 4;
             search_entry.hexpand = true;
             search_entry.placeholder_text = _("Search Fonts");
             search_entry.valign = Gtk.Align.CENTER;
 
+            filter_btn = new Gtk.Button.from_icon_name ("view-more-symbolic", Gtk.IconSize.BUTTON);
+            filter_btn.margin = 8;
+            filter_btn.margin_start = 4;
+            filter_btn.valign = Gtk.Align.CENTER;
+
+            Gtk.CheckButton item_option = new Gtk.CheckButton.with_label ("My Option");
+            item_option.set_active (true);
+
+            Gtk.ListBox listbox_options = new Gtk.ListBox();
+            listbox_options.margin = 8;
+            listbox_options.selection_mode = Gtk.SelectionMode.NONE;
+            listbox_options.add (item_option);
+
+            menu_popover = new Gtk.Popover(filter_btn);
+            menu_popover.position = Gtk.PositionType.BOTTOM;
+        		menu_popover.set_size_request (256, -1);
+            menu_popover.add (listbox_options);
+
+            filter_btn.clicked.connect(() => {
+                menu_popover.show_all ();
+                menu_popover.popup ();
+            });
+
+            grid = new Gtk.Grid ();
+            grid.attach(search_entry, 0, 1);
+            grid.attach(filter_btn, 1, 1);
+
             box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            box.pack_start (search_entry, false, false);
+            box.pack_start (grid, false, false);
             box.pack_start (listbox, false, false);
 
             this.hscrollbar_policy = Gtk.PolicyType.NEVER;

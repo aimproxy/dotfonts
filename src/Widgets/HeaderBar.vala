@@ -40,12 +40,6 @@ namespace App.Widgets {
 
             MainWindow.settings.bind ("use-dark-theme", mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
-            go_back = new Gtk.Button.from_icon_name ("go-previous", Gtk.IconSize.BUTTON);
-            go_back.clicked.connect (() => {
-                MainWindow.stack.set_visible_child_full ("welcome_view", Gtk.StackTransitionType.SLIDE_RIGHT);
-            });
-
-            this.pack_start (go_back);
             this.pack_end (mode_switch);
         }
 

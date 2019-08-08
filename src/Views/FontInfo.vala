@@ -73,12 +73,12 @@ using App.Services;
              snippet_html.get_style_context ().add_class (snippet_class);
              snippet_html.add (source_view_html);
 
-             var font_family_label = new Gtk.Label (_("Example"));
+             var font_family_label = new Gtk.Label ("");
              font_family_label.margin_top = 5;
              font_family_label.xalign = 0;
              font_family_label.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
 
-             var font_category_label = new Gtk.Label (_("Example"));
+             var font_category_label = new Gtk.Label ("");
              font_category_label.xalign = 0;
              font_category_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
@@ -192,7 +192,6 @@ using App.Services;
                  }
 
                  foreach (var entry in files.entries) {
-                     print (entry.value);
                      download_list.add (new FontDownloadListRow (family,
                                                                  entry.key,
                                                                  entry.value));
