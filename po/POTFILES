@@ -1,0 +1,3 @@
+src/Views/FontInfo.vala
+src/Views/Sidebar.vala
+src/Widgets/HeaderBar.vala

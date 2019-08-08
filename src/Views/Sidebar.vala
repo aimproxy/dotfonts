@@ -36,7 +36,7 @@ namespace App.Views {
             search_entry.margin = 8;
             search_entry.margin_end = 4;
             search_entry.hexpand = true;
-            search_entry.placeholder_text = _("Search Friends");
+            search_entry.placeholder_text = _("Search Fonts");
             search_entry.valign = Gtk.Align.CENTER;
 
             filter_btn = new Gtk.Button.from_icon_name ("view-more-symbolic", Gtk.IconSize.BUTTON);
