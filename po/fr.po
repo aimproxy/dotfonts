@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.aimproxy.dotfonts\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-08 12:27+0200\n"
+"POT-Creation-Date: 2019-08-08 13:32+0200\n"
 "PO-Revision-Date: 2019-08-08 12:20+0200\n"
 "Last-Translator: NathanBnm\n"
 "Language-Team: none\n"
@@ -16,10 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: src/Views/FontInfo.vala:76 src/Views/FontInfo.vala:81
-msgid "Example"
-msgstr "Exemple"
 
 #: src/Views/FontInfo.vala:85
 msgid "Variants"
@@ -37,7 +33,7 @@ msgstr "Intégration en HTML"
 msgid "Download"
 msgstr "Télécharger"
 
-#: src/Views/FontInfo.vala:113 src/Views/FontInfo.vala:203
+#: src/Views/FontInfo.vala:113 src/Views/FontInfo.vala:202
 msgid "Install"
 msgstr "Installer"
 
@@ -53,26 +49,13 @@ msgstr ""
 msgid "Use the following CSS rules to specify these families:"
 msgstr "Utilisez les règles CSS suivantes pour spécifier ces polices :"
 
-#: src/Views/FontInfo.vala:213
+#: src/Views/FontInfo.vala:212
 msgid "Installed"
 msgstr "Installé"
 
-#: src/Views/Sidebar.vala:35 src/Views/WelcomeView.vala:25
+#: src/Views/Sidebar.vala:39
 msgid "Search Fonts"
 msgstr "Rechercher des polices"
-
-#: src/Views/WelcomeView.vala:19
-msgid "DotFonts"
-msgstr "DotFonts"
-
-#: src/Views/WelcomeView.vala:20
-msgid "Find beautiful fonts and easy install on elementary OS"
-msgstr "Trouvez de magnifiques polices faciles à installer sur elementary OS"
-
-#: src/Views/WelcomeView.vala:25
-msgid "Download and Install fonts from Google Fonts to your desktop"
-msgstr ""
-"Téléchargez et installez des polices depuis Google Fonts sur votre ordinateur"
 
 #: src/Widgets/HeaderBar.vala:31
 msgid "Light background"
@@ -81,3 +64,18 @@ msgstr "Thème clair"
 #: src/Widgets/HeaderBar.vala:32
 msgid "Dark background"
 msgstr "Thème sombre"
+
+#~ msgid "Example"
+#~ msgstr "Exemple"
+
+#~ msgid "DotFonts"
+#~ msgstr "DotFonts"
+
+#~ msgid "Find beautiful fonts and easy install on elementary OS"
+#~ msgstr ""
+#~ "Trouvez de magnifiques polices faciles à installer sur elementary OS"
+
+#~ msgid "Download and Install fonts from Google Fonts to your desktop"
+#~ msgstr ""
+#~ "Téléchargez et installez des polices depuis Google Fonts sur votre "
+#~ "ordinateur"

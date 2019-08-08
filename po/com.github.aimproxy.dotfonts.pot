@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.aimproxy.dotfonts\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-08 12:27+0200\n"
+"POT-Creation-Date: 2019-08-08 13:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/Views/FontInfo.vala:76 src/Views/FontInfo.vala:81
-msgid "Example"
-msgstr ""
 
 #: src/Views/FontInfo.vala:85
 msgid "Variants"
@@ -37,7 +33,7 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
-#: src/Views/FontInfo.vala:113 src/Views/FontInfo.vala:203
+#: src/Views/FontInfo.vala:113 src/Views/FontInfo.vala:202
 msgid "Install"
 msgstr ""
 
@@ -51,24 +47,12 @@ msgstr ""
 msgid "Use the following CSS rules to specify these families:"
 msgstr ""
 
-#: src/Views/FontInfo.vala:213
+#: src/Views/FontInfo.vala:212
 msgid "Installed"
 msgstr ""
 
-#: src/Views/Sidebar.vala:35 src/Views/WelcomeView.vala:25
+#: src/Views/Sidebar.vala:39
 msgid "Search Fonts"
-msgstr ""
-
-#: src/Views/WelcomeView.vala:19
-msgid "DotFonts"
-msgstr ""
-
-#: src/Views/WelcomeView.vala:20
-msgid "Find beautiful fonts and easy install on elementary OS"
-msgstr ""
-
-#: src/Views/WelcomeView.vala:25
-msgid "Download and Install fonts from Google Fonts to your desktop"
 msgstr ""
 
 #: src/Widgets/HeaderBar.vala:31
