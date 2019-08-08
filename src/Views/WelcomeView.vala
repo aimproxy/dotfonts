@@ -17,7 +17,7 @@ namespace App.Views {
         public WelcomeView () {
             Object (
                 title: _("DotFonts"),
-                subtitle: _("Find beautiful fonts and easy install on elementaryOS")
+                subtitle: _("Find beautiful fonts and easy install on elementary OS")
             );
         }
 

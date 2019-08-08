@@ -32,7 +32,7 @@ namespace App.Views {
             search_entry = new Gtk.SearchEntry ();
             search_entry.margin = 8;
             search_entry.hexpand = true;
-            search_entry.placeholder_text = _("Search Friends");
+            search_entry.placeholder_text = _("Search Fonts");
             search_entry.valign = Gtk.Align.CENTER;
 
             box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
