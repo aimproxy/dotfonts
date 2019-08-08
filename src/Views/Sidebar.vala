@@ -20,9 +20,9 @@ namespace App.Views {
         Gtk.Button filter_btn;
         Gtk.ListBox listbox;
         Gtk.Popover menu_popover;
+        Gtk.ListBox listbox_options;
+        Gtk.Label listbox_title;
         Gapi gapi;
-
-        public Sidebar () {}
 
         construct {
             gapi = Gapi.get_instance();
@@ -44,17 +44,18 @@ namespace App.Views {
             filter_btn.margin_start = 4;
             filter_btn.valign = Gtk.Align.CENTER;
 
-            Gtk.CheckButton item_option = new Gtk.CheckButton.with_label ("My Option");
-            item_option.set_active (true);
-
-            Gtk.ListBox listbox_options = new Gtk.ListBox();
+            listbox_options = new Gtk.ListBox();
             listbox_options.margin = 8;
             listbox_options.selection_mode = Gtk.SelectionMode.NONE;
-            listbox_options.add (item_option);
+
+            listbox_title = new Gtk.Label ("Categories");
+            listbox_title.xalign = 0;
+            listbox_title.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+            listbox_options.add(listbox_title);
 
             menu_popover = new Gtk.Popover(filter_btn);
             menu_popover.position = Gtk.PositionType.BOTTOM;
-        		menu_popover.set_size_request (256, -1);
+        		menu_popover.set_size_request (200, -1);
             menu_popover.add (listbox_options);
 
             filter_btn.clicked.connect(() => {
@@ -84,7 +85,7 @@ namespace App.Views {
                 warning ("Error getting fonts: %s", e.message);
             }
 
-            gapi.request_page_success.connect((fonts) => {
+            gapi.request_page_success.connect ((fonts) => {
                 foreach (var font in fonts) {
                     listbox.add (new FontListRow (font.family,
                                                   font.category,
@@ -93,6 +94,17 @@ namespace App.Views {
                 }
 
                 listbox.show_all ();
+            });
+
+            gapi.categories_ready.connect ((categories) => {
+              foreach (string c in categories) {
+                Gtk.CheckButton item_option = new Gtk.CheckButton.with_label (c);
+                item_option.margin = 4;
+                item_option.set_active (true);
+                listbox_options.add (item_option);
+              }
+
+              listbox_options.show_all ();
             });
 
             listbox.row_selected.connect ((row) => {

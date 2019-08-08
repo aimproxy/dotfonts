@@ -16,7 +16,8 @@ namespace App.Services {
         private static Gapi? instance;
         private Soup.Session session;
 
-        public signal void request_page_success(List<Font?> list);
+        public signal void request_page_success (List<Font?> list);
+        public signal void categories_ready (Gee.HashSet<string> categories);
 
         public Gapi() {
             this.session = new Soup.Session();
@@ -44,7 +45,9 @@ namespace App.Services {
                         parser.load_from_data ((string) msg.response_body.flatten ().data, -1);
 
                         var list = get_data (parser);
+                        var categories = get_categories (parser);
                         request_page_success (list);
+                        categories_ready (categories);
                     } catch (Error e) {
                         show_message("Request page fail", e.message, "dialog-error");
                     }
@@ -52,6 +55,31 @@ namespace App.Services {
                     show_message("Request page fail", @"status code: $(mess.status_code)", "dialog-error");
                 }
             });
+        }
+
+        public Gee.HashSet<string> get_categories (Json.Parser parser) {
+          Gee.HashSet<string> categories = new Gee.HashSet<string> ();
+
+          Json.Node root = parser.get_root ();
+          assert(root.get_node_type () == Json.NodeType.OBJECT);
+
+          Json.Object res = root.get_object ();
+          Json.Array items = res.get_array_member ("items");
+
+          foreach (unowned Json.Node font in items.get_elements ()) {
+            assert(font.get_node_type () == Json.NodeType.OBJECT);
+
+            var obj = font.get_object ();
+            var category = obj.get_string_member ("category");
+
+            /*  Categories could be duplicated, so
+             *  using this method duplicates will not be added
+             *  because we are using a set!
+             */
+            categories.add (category);
+          }
+
+          return categories;
         }
 
         private List<Font?> get_data (Json.Parser parser) {
