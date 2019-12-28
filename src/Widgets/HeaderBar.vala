@@ -28,8 +28,8 @@ namespace App.Widgets {
             gtk_settings = Gtk.Settings.get_default ();
 
             mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
-            mode_switch.primary_icon_tooltip_text = "Light";
-            mode_switch.secondary_icon_tooltip_text = "Dark";
+            mode_switch.primary_icon_tooltip_text = _("Light background");
+            mode_switch.secondary_icon_tooltip_text = _("Dark background");
             mode_switch.valign = Gtk.Align.CENTER;
             mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
 
@@ -40,12 +40,6 @@ namespace App.Widgets {
 
             MainWindow.settings.bind ("use-dark-theme", mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
-            go_back = new Gtk.Button.from_icon_name ("go-previous", Gtk.IconSize.BUTTON);
-            go_back.clicked.connect (() => {
-                MainWindow.stack.set_visible_child_full ("welcome_view", Gtk.StackTransitionType.SLIDE_RIGHT);
-            });
-
-            this.pack_start (go_back);
             this.pack_end (mode_switch);
         }
 

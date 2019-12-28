@@ -17,13 +17,11 @@ namespace App.Windows {
     public class MainWindow : Gtk.ApplicationWindow {
 
         public static GLib.Settings settings;
-        public static Gtk.Stack stack;
         public static FontInfo font_info;
         Gtk.CssProvider provider;
         Gtk.Paned g_fonts;
         Sidebar sidebar;
         HeaderBar header;
-        WelcomeView welcome;
 
         public MainWindow (Gtk.Application app) {
             Object (
@@ -63,6 +61,7 @@ namespace App.Windows {
                 set_default_size (1100, 690);
             }
 
+            // On Destroy
             delete_event.connect (() => {
                 int root_x, root_y;
                 int root_w, root_h;
@@ -76,26 +75,16 @@ namespace App.Windows {
                 return false;
             });
 
-            g_fonts = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             font_info = new FontInfo ();
             sidebar = new Sidebar ();
+
+            // Main View
+            g_fonts = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             g_fonts.set_position (256);
             g_fonts.pack1 (sidebar, false, false);
             g_fonts.pack2 (font_info, true, false);
 
-            welcome = new WelcomeView ();
-
-            stack = new Gtk.Stack ();
-            stack.add_named (welcome, "welcome_view");
-            stack.add_named (g_fonts, "sidebar_view");
-
-            welcome.search_on_google_fonts.connect (() => {
-                stack.set_visible_child_full ("sidebar_view", Gtk.StackTransitionType.SLIDE_LEFT);
-            });
-
-            stack.set_visible_child_name ("welcome_view");
-
-            this.add (stack);
+            this.add (g_fonts);
             this.show_all ();
         }
     }
