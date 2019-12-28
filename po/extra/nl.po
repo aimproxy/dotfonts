@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-08 12:27+0200\n"
+"PO-Revision-Date: 2019-11-07 17:32+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
+
+#: data/com.github.aimproxy.dotfonts.desktop.in:3
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:7
+msgid "DotFonts"
+msgstr "DotFonts"
+
+#: data/com.github.aimproxy.dotfonts.desktop.in:4
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:8
+msgid "Find beautiful fonts and easy install"
+msgstr "Zoek mooie lettertypen en installeer ze met één klik"
+
+#: data/com.github.aimproxy.dotfonts.desktop.in:5
+msgid "com.github.aimproxy.dotfonts"
+msgstr "com.github.aimproxy.dotfonts"
+
+#: data/com.github.aimproxy.dotfonts.desktop.in:10
+msgid "fonts;"
+msgstr "lettertypen;"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:10
+msgid "The simplest way to try, install, and manage fonts."
+msgstr "De eenvoudigste manier op lettertypen uit te proberen, installeren en beheren."
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:11
+msgid "Install fonts from the cloud on your computer in seconds!"
+msgstr "Haal lettertypen op van het internet en installeer ze snel!"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:13
+msgid "Micael Dias (@aimproxy)"
+msgstr "Micael Dias (@aimproxy)"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:28
+msgid "Screenshoots with default eOS settings"
+msgstr "Schermfoto's met standaard eOS-instellingen"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:33
+msgid "Fix Premeature end of tag in appdata.xml.in"
+msgstr "Voortijdig einde van tag gerepareerd in appdata.xml.in"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:38
+msgid "New"
+msgstr "Nieuw"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:40
+msgid "Welcome View"
+msgstr "Overzichtspagina"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:41
+msgid "Download Button"
+msgstr "Downloadknop"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:42
+msgid "Install Button"
+msgstr "Installeerknop"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:44
+msgid "Improvements"
+msgstr "Verbeteringen"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:46
+msgid "Make Google API Request Async"
+msgstr "Google API-verzoek asynchroon gemaakt"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:48
+msgid "Fix"
+msgstr "Opgelost"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:50
+msgid "Fix Desktop Name"
+msgstr "Bureaubladnaam gerepareerd"
+
+#: data/com.github.aimproxy.dotfonts.appdata.xml.in:56
+msgid "Launch BETA Release"
+msgstr "Bètaversie vrijgegeven"

@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.aimproxy.dotfonts package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.aimproxy.dotfonts\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-08 13:32+0200\n"
+"PO-Revision-Date: 2019-11-07 17:29+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
+
+#: src/Views/FontInfo.vala:85
+msgid "Variants"
+msgstr "Varianten"
+
+#: src/Views/FontInfo.vala:92
+msgid "Specify in CSS"
+msgstr "Specificeren in CSS"
+
+#: src/Views/FontInfo.vala:97
+msgid "Embed in HTML"
+msgstr "Insluiten in HTML"
+
+#: src/Views/FontInfo.vala:102
+msgid "Download"
+msgstr "Downloaden"
+
+#: src/Views/FontInfo.vala:113 src/Views/FontInfo.vala:202
+msgid "Install"
+msgstr "Installeren"
+
+#: src/Views/FontInfo.vala:143
+msgid ""
+"To embed your selected fonts into a webpage, copy this code into the <head> "
+"of your HTML document!"
+msgstr ""
+"Kopieer deze code naar de <head>-sectie van je HTML-document om de "
+"lettertypen in te sluiten!"
+
+#: src/Views/FontInfo.vala:144
+msgid "Use the following CSS rules to specify these families:"
+msgstr "Gebruik de volgende CSS-regels om de lettertypen te specificeren:"
+
+#: src/Views/FontInfo.vala:212
+msgid "Installed"
+msgstr "Geïnstalleerd"
+
+#: src/Views/Sidebar.vala:39
+msgid "Search Fonts"
+msgstr "Lettertypen zoeken"
+
+#: src/Widgets/HeaderBar.vala:31
+msgid "Light background"
+msgstr "Licht thema"
+
+#: src/Widgets/HeaderBar.vala:32
+msgid "Dark background"
+msgstr "Donker thema"
