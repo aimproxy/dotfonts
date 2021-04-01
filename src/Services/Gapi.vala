@@ -34,7 +34,7 @@ namespace App.Services {
         public void load_trending () {
             var uri = Constants.GAPI +
                 "webfonts?key=" + Constants.GAPI_KEY +
-                "&?sort=trending";
+                "&sort=trending";
 
             var msg = new Soup.Message ("GET", uri);
 
